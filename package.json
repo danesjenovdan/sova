@@ -1,0 +1,17 @@
+{
+  "name": "sova",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "author": "Danes je nov dan",
+  "license": "Unlicense",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.1",
+    "parcel": "^2.16.1",
+    "sass": "^1.94.2"
+  }
+}
