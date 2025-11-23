@@ -8,6 +8,83 @@
     <script type="module" src="./main.js"></script>
   </head>
   <body>
-    <h1>Sova</h1>
+    <div class="page-wrapper">
+      <div class="page-content">
+        <div class="content-page landing">
+          <h1>Ali mi SOVA prisluškuje?</h1>
+          <p class="lead">
+            Preveri, kaj Slovenska obveščevalna-varnostna agencija ve o tebi
+          </p>
+          <button type="button" class="matrix-btn js-check-btn">
+            <span>PREVERI!</span>
+            <div class="matrix-btn__code-rain"></div>
+          </button>
+        </div>
+        <div class="content-page checking">
+          <div class="terminal-window">
+            <div class="terminal-window__header">&nbsp;</div>
+            <div class="terminal-window__content">
+              <div id="autotype"></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-page results active">
+          <div>
+            <div class="results-section">
+              <h2>Rezultati iskanja</h2>
+              <div class="alert emergency">
+                <div class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 33 28"
+                  >
+                    <path
+                      fill="#f20"
+                      d="M32.5754 24.5356 18.2347 1.1576c-.9544-1.558-2.5157-1.536-3.4702.0219L.4238 24.5256c-.9544 1.559-.2416 2.7626 1.5841 2.7626h28.9823c1.8269-.0001 2.5398-1.1961 1.5853-2.753zM16.4877 6.3322c.9183 0 1.629 1.0146 1.5819 2.2544l-.2907 7.4717c-.0471 1.2387-.6297 2.2533-1.2945 2.2533s-1.2485-1.0146-1.2955-2.2533l-.2876-7.4714c-.047-1.2399.6659-2.2545 1.5864-2.2545zm0 17.6074c-1.1589 0-1.9537-.8473-1.9297-2.0051 0-1.1829.797-2.0051 1.9297-2.0051 1.1808 0 1.9274.8222 1.9526 2.0051 0 1.1579-.7718 2.0051-1.9526 2.0051"
+                    />
+                  </svg>
+                </div>
+                <em>DA, SI POD NADZOROM!</em>
+              </div>
+            </div>
+            <div class="results-section">
+              <h2>Tu je le nekaj podatkov, ki jih imajo o tebi:</h2>
+              <div class="alert warning">
+                <span>Število korakov prvi teden novembra</span>
+                <em class="right js-result-value-1">43605</em>
+              </div>
+              <div class="alert danger">
+                <span>
+                  Ljudje v tvojem imeniku na seznamu opazovancev 387-B
+                </span>
+                <em class="right js-result-value-2">7</em>
+              </div>
+              <div class="alert warning">
+                <span>
+                  Čas preživet na straneh z eksplicitno vsebino v 12 mesecih
+                </span>
+                <em class="right js-result-value-3">132 minut</em>
+              </div>
+              <div class="alert ok">
+                <span>Trajanje povprečnega klica ta mesec</span>
+                <em class="right js-result-value-4">9 minut 29 sekund</em>
+              </div>
+              <div class="alert danger">
+                <span>V vsaj enem sporočilu je omenjena nevarna beseda</span>
+                <em class="right js-result-value-5">cena</em>
+              </div>
+            </div>
+            <div class="results-section">
+              <h2>Kaj lahko storiš, da se zaščitiš?</h2>
+              <button type="button" class="matrix-btn js-results-btn">
+                <span>PREVERI!</span>
+                <div class="matrix-btn__code-rain"></div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

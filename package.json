@@ -13,5 +13,8 @@
     "@parcel/transformer-sass": "^2.16.1",
     "parcel": "^2.16.1",
     "sass": "^1.94.2"
+  },
+  "dependencies": {
+    "termynal": "^0.0.4"
   }
 }
