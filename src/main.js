@@ -243,7 +243,7 @@ function loadResultValues() {
       const resultValue = resultClone.querySelector(".js-result-value");
       if (resultLabel && resultValue) {
         const savedData = localStorage.getItem(`sova-result-data-${i}`);
-        if (savedData) {
+        if (savedData && location.href.indexOf("sova-no-cache") === -1) {
           const parsedData = JSON.parse(savedData);
           resultLabel.textContent = parsedData.label;
           resultValue.textContent = parsedData.value;
@@ -314,13 +314,13 @@ function loadResultValues() {
         const dataToStore = {
           label: option.label,
           value: resultValue.textContent,
-          class: option.class,
+          class: className,
           optionIndex: optionIndex,
         };
-        // localStorage.setItem(
-        //   `sova-result-data-${i}`,
-        //   JSON.stringify(dataToStore)
-        // );
+        localStorage.setItem(
+          `sova-result-data-${i}`,
+          JSON.stringify(dataToStore)
+        );
       }
     }
   }
