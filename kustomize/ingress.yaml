@@ -4,6 +4,8 @@ metadata:
   name: sova
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://sova.danesjenovdan.si, https://sova.djnd.si, https://sova.lb.djnd.si"
 spec:
   ingressClassName: nginx
   tls:
