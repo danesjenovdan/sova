@@ -8,4 +8,4 @@ resources:
 images:
   - name: sova
     newName: rg.fr-par.scw.cloud/djnd/sova
-    newTag: '07d85504890ccc39f54da885e9e8520108a2cbe0'
+    newTag: '9f79eb6d79f15fc7eabde9a5f29cfd858936edbf'
