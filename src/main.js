@@ -6,6 +6,7 @@ async function nextContentPage() {
     resolve = res;
   });
 
+  const pageContent = document.querySelector(".page-content");
   const activePage = document.querySelector(".content-page.active");
   if (activePage) {
     activePage.classList.add("fade");
@@ -14,6 +15,10 @@ async function nextContentPage() {
       "transitionend",
       () => {
         activePage.classList.remove("fade");
+
+        if (pageContent) {
+          pageContent.scrollTo({ top: 0 });
+        }
 
         const nextPage = activePage.nextElementSibling;
         if (nextPage && nextPage.classList.contains("content-page")) {
@@ -50,34 +55,26 @@ async function startTermynal() {
     [
       {
         type: "input",
-        value: "> Iniciam varno povezavo...",
+        value: "> Analiziram podatke...",
       },
       {
         type: "input",
-        value: "> IP naslov zaznan: 192.168.X.X...",
+        value: "> Preverjam vire...",
       },
       {
         type: "input",
-        value: "> Obhajam požarne zidove...",
-      },
-      {
-        type: "input",
-        value: "> Dostopam do baze SOVA_MAIN_DB...",
-      },
-      {
-        type: "input",
-        value: "> Šifrirni ključ: 4096-bit RSA...",
+        value: "> Dostopam do baze...",
       },
       { type: "progress", typeDelay: 30, delay: 1 },
       { value: "DOSTOP ODOBREN." },
       {
-        value: "> Prenašanje metapodatkov...",
+        value: "> Odpiram arhiv...",
         delay: 1,
       },
       { type: "progress", typeDelay: 10, delay: 1 },
-      { value: "> Nalaganje ...", delay: 1 },
+      { value: "> Ustvarjam profil...", delay: 1 },
       { type: "progress", typeDelay: 60, delay: 1 },
-      { value: "NALAGANJE ZAKLJUČENO.", delay: 1000 },
+      { value: "PROFIL USTVARJEN.", delay: 1000 },
       { value: "", className: "termynal-done" },
     ]
   );
@@ -147,6 +144,13 @@ document.addEventListener("DOMContentLoaded", () => {
     checkBtn.addEventListener("click", async () => {
       await nextContentPage();
       await startTermynal();
+      await nextContentPage();
+    });
+  }
+
+  const resultsBtn = document.querySelector(".js-results-btn");
+  if (resultsBtn) {
+    resultsBtn.addEventListener("click", async () => {
       await nextContentPage();
     });
   }
