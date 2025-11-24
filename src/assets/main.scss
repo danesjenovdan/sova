@@ -53,8 +53,13 @@ body {
   }
 }
 
-.width-wrapper {
+.width-wrapper-960 {
   max-width: 960px;
+  margin-inline: auto;
+}
+
+.width-wrapper-1200 {
+  max-width: 1200px;
   margin-inline: auto;
 }
 
@@ -192,6 +197,10 @@ button.matrix-btn {
       margin-bottom: 1rem;
       font-size: 1.3125rem;
       font-weight: 400;
+
+      @media (max-width: 576px) {
+        font-size: 1.25rem;
+      }
     }
 
     .alert {
@@ -201,13 +210,21 @@ button.matrix-btn {
 
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.5rem 1rem;
       padding: 0.75rem 1.5rem;
       background: var(--_alert-bg);
       border: var(--_alert-border-width) solid var(--_alert-border);
       border-radius: 7px;
       font-size: 1.3125rem;
       line-height: 2rem;
+
+      @media (max-width: 576px) {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+        padding: 0.5rem 1rem;
+      }
 
       & + .alert {
         margin-top: 1.75rem;
@@ -237,6 +254,11 @@ button.matrix-btn {
         line-height: 2rem;
         color: var(--_alert-border);
 
+        @media (max-width: 576px) {
+          font-size: 1.5rem;
+          line-height: 1.5rem;
+        }
+
         &.right {
           margin-left: auto;
         }
@@ -247,6 +269,10 @@ button.matrix-btn {
         --_alert-border: #ff2200;
         --_alert-border-width: 3px;
         box-shadow: 0 0 5px #ff2200;
+
+        @media (max-width: 576px) {
+          align-items: center;
+        }
       }
 
       &.danger {

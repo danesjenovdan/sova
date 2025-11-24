@@ -11,7 +11,7 @@
     <div class="page-wrapper">
       <div class="page-content">
         <div class="content-page landing active">
-          <div class="width-wrapper">
+          <div class="width-wrapper-960">
             <h1>Ali mi SOVA prisluškuje?</h1>
             <p class="lead">
               Preveri, kaj Slovenska obveščevalno-varnostna agencija ve o tebi.
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="content-page checking">
-          <div class="width-wrapper">
+          <div class="width-wrapper-960">
             <div class="terminal-window">
               <div class="terminal-window__header">&nbsp;</div>
               <div class="terminal-window__content">
@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="content-page results">
-          <div class="width-wrapper">
+          <div class="width-wrapper-1200">
             <div class="results-section">
               <h2>Rezultati iskanja</h2>
               <div class="alert emergency">
@@ -54,30 +54,12 @@
             </div>
             <div class="results-section">
               <h2>To so nekateri podatki, ki jih ima SOVA o tebi:</h2>
-              <div class="alert warning">
-                <span>Število korakov prvi teden novembra</span>
-                <em class="right js-result-value-1">43605</em>
-              </div>
-              <div class="alert danger">
-                <span>
-                  Ljudje v tvojem imeniku na seznamu opazovancev 387-B
-                </span>
-                <em class="right js-result-value-2">7</em>
-              </div>
-              <div class="alert warning">
-                <span>
-                  Čas preživet na straneh z eksplicitno vsebino v 12 mesecih
-                </span>
-                <em class="right js-result-value-3">132 minut</em>
-              </div>
-              <div class="alert ok">
-                <span>Trajanje povprečnega klica ta mesec</span>
-                <em class="right js-result-value-4">9 minut 29 sekund</em>
-              </div>
-              <div class="alert danger">
-                <span>V vsaj enem sporočilu je omenjena nevarna beseda</span>
-                <em class="right js-result-value-5">cena</em>
-              </div>
+              <template class="js-result-template">
+                <div class="alert">
+                  <span class="js-result-label"></span>
+                  <em class="right js-result-value"></em>
+                </div>
+              </template>
             </div>
             <div class="results-section">
               <h2>Kaj lahko narediš, da se zaščitiš?</h2>
@@ -89,7 +71,7 @@
           </div>
         </div>
         <div class="content-page explanation">
-          <div class="width-wrapper">
+          <div class="width-wrapper-960">
             <div class="terminal-window">
               <div class="terminal-window__header">
                 Na srečo je vse to zaenkrat še izmišljeno.<br />
