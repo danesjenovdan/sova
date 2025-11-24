@@ -10,8 +10,32 @@ spec:
     - hosts:
         - sova.lb.djnd.si
       secretName: sova-tls
+    - hosts:
+        - sova.danesjenovdan.si
+        - sova.djnd.si
+      secretName: sova-djnd-tls
   rules:
     - host: sova.lb.djnd.si
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sova
+                port:
+                  number: 80
+    - host: sova.danesjenovdan.si
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sova
+                port:
+                  number: 80
+    - host: sova.djnd.si
       http:
         paths:
           - path: /
