@@ -436,6 +436,10 @@ button.matrix-btn {
       font-family: inherit;
       font-size: 1rem;
       color: #000;
+
+      @media (max-width: 576px) {
+        font-size: 0.875rem;
+      }
     }
 
     .label {
@@ -482,6 +486,10 @@ button.matrix-btn {
       color: var(--color-bg);
       text-align: center;
       text-decoration: none;
+
+      @media (max-width: 576px) {
+        font-size: 1rem;
+      }
 
       span {
         display: block;
@@ -622,6 +630,10 @@ button.matrix-btn {
       .text {
         text-align: center;
 
+        @media (max-width: 576px) {
+          text-align: left;
+        }
+
         .title {
           font-size: 1.125rem;
           font-weight: 600;
@@ -639,6 +651,10 @@ button.matrix-btn {
         justify-content: center;
         gap: 0.5rem;
         margin-top: 1rem;
+
+        @media (max-width: 576px) {
+          justify-content: start;
+        }
 
         a {
           display: flex;

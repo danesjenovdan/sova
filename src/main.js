@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const emailTo = document.querySelector(".js-email-to");
       if (emailContent && emailSubject && emailTo) {
         const mailtoLink = `mailto:${encodeURIComponent(
-          emailTo.textContent.trim()
+          emailTo.textContent.trim().replace(/\s+/g, "")
         )}?subject=${encodeURIComponent(
           emailSubject.textContent.trim()
         )}&body=${encodeURIComponent(emailContent)}`;
