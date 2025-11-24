@@ -4,6 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sova</title>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./assets/favicons/favicon-96x96.png"
+    />
+    <link rel="shortcut icon" href="./assets/favicons/favicon.ico" />
+
     <link rel="stylesheet" href="./assets/main.scss" />
     <script type="module" src="./main.js"></script>
   </head>
@@ -11,25 +25,29 @@
     <div class="page-wrapper">
       <div class="page-content">
         <div class="content-page landing active">
-          <h1>Ali mi SOVA prisluškuje?</h1>
-          <p class="lead">
-            Preveri, kaj Slovenska obveščevalno-varnostna agencija ve o tebi.
-          </p>
-          <button type="button" class="matrix-btn js-check-btn">
-            <span>PREVERI</span>
-            <div class="matrix-btn__code-rain"></div>
-          </button>
+          <div class="width-wrapper-960">
+            <h1>Ali mi SOVA prisluškuje?</h1>
+            <p class="lead">
+              Preveri, kaj Slovenska obveščevalno-varnostna agencija ve o tebi.
+            </p>
+            <button type="button" class="matrix-btn js-check-btn">
+              <span>PREVERI</span>
+              <div class="matrix-btn__code-rain"></div>
+            </button>
+          </div>
         </div>
-        <div class="content-page checking">
-          <div class="terminal-window">
-            <div class="terminal-window__header">&nbsp;</div>
-            <div class="terminal-window__content">
-              <div id="autotype"></div>
+        <div class="content-page checking" inert>
+          <div class="width-wrapper-960">
+            <div class="terminal-window">
+              <div class="terminal-window__header">&nbsp;</div>
+              <div class="terminal-window__content">
+                <div id="autotype"></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="content-page results">
-          <div>
+        <div class="content-page results" inert>
+          <div class="width-wrapper-1200">
             <div class="results-section">
               <h2>Rezultati iskanja</h2>
               <div class="alert emergency">
@@ -50,30 +68,12 @@
             </div>
             <div class="results-section">
               <h2>To so nekateri podatki, ki jih ima SOVA o tebi:</h2>
-              <div class="alert warning">
-                <span>Število korakov prvi teden novembra</span>
-                <em class="right js-result-value-1">43605</em>
-              </div>
-              <div class="alert danger">
-                <span>
-                  Ljudje v tvojem imeniku na seznamu opazovancev 387-B
-                </span>
-                <em class="right js-result-value-2">7</em>
-              </div>
-              <div class="alert warning">
-                <span>
-                  Čas preživet na straneh z eksplicitno vsebino v 12 mesecih
-                </span>
-                <em class="right js-result-value-3">132 minut</em>
-              </div>
-              <div class="alert ok">
-                <span>Trajanje povprečnega klica ta mesec</span>
-                <em class="right js-result-value-4">9 minut 29 sekund</em>
-              </div>
-              <div class="alert danger">
-                <span>V vsaj enem sporočilu je omenjena nevarna beseda</span>
-                <em class="right js-result-value-5">cena</em>
-              </div>
+              <template class="js-result-template">
+                <div class="alert">
+                  <span class="js-result-label"></span>
+                  <em class="right js-result-value"></em>
+                </div>
+              </template>
             </div>
             <div class="results-section">
               <h2>Kaj lahko narediš, da se zaščitiš?</h2>
@@ -84,138 +84,161 @@
             </div>
           </div>
         </div>
-        <div class="content-page explanation">
-          <div class="terminal-window">
-            <div class="terminal-window__header">
-              Na srečo je vse to zaenkrat še izmišljeno.<br />
-              <strong>Ampak kmalu lahko postane res.</strong>
+        <div class="content-page explanation" inert>
+          <div class="width-wrapper-960">
+            <div class="terminal-window">
+              <div class="terminal-window__header">
+                Na srečo je vse to zaenkrat še izmišljeno.<br />
+                <strong>Ampak kmalu lahko postane res.</strong>
+              </div>
+              <div class="terminal-window__content">
+                <h3>Kaj se dogaja?</h3>
+                <p>
+                  Vlada uvaja zakon, ki SOVI daje moč, da nas nadzoruje kot še
+                  nikoli doslej. Predlog zakona o Slovenski
+                  obveščevalno-varnostni agenciji vsebuje skrajno sporne
+                  spremembe, ki širijo družbo nadzora in grobo posegajo v naše
+                  temeljne pravice.
+                </p>
+                <p>
+                  Zakon vpeljuje <em>dve nevarni novi tehnologiji</em> –
+                  tehnično sredstvo za nadzor signala mobilne telefonije (t. i.
+                  IMSI lovilec) in vohunsko programsko opremo za pridobivanje
+                  podatkov (t. i. <i>spyware</i>). IMSI lovilci lahko
+                  identificirajo uporabnike na določeni lokaciji s pomočjo
+                  njihovih telefonov, medtem ko spyware omogoča popoln dostop in
+                  upravljanje elektronskih naprav.
+                </p>
+                <p>
+                  Posamezniki, ki so tarča vohunjenja, so izpostavljeni posegom
+                  v zasebno življenje, zlorabi njihovih podatkov, izgubi
+                  dostojanstva, ogrožanju varnosti ter pritiskom, ki lahko
+                  omejijo svobodo izražanje, delovanja medijev, zbiranja in
+                  združevanja. Poleg tega škode, ki jo povzročajo IMSI lovilci
+                  in vohunska programska oprema, ni mogoče omejiti in pogosto ne
+                  prizadene le domnevne tarče, temveč tudi vse, ki so v bližini
+                  naprav ali komunicirajo z njo. S tem so pravice kršene širšemu
+                  krogu ljudi, kar vključuje otroke, družinske člane, sodelavce,
+                  odvetnike in novinarske vire, ki postanejo kolateralna škoda
+                  tovrstnega nadzora.
+                </p>
+                <h3>Zakaj je nujno, da preprečimo sprejem zakona?</h3>
+                <p>
+                  Nevarnost žal ni samo teorija. Praksa iz tujine nam kaže, da
+                  se takšna orodja zlorabljajo za državno represijo, usmerjeno
+                  proti aktivistom, predstavnikom opozicije, novinarjem,
+                  zagovornikom človekovih pravic in drugim kritikom oblasti –
+                  tudi s strani “demokratičnih” vlad. Spyware ni orodje za
+                  varnost, ampak orodje za ustrahovanje in nadzor!
+                </p>
+                <p>
+                  Vlada poskuša te izjemno nevarne spremembe sprejeti po nujnem
+                  postopku pod pretvezo varnosti. S tem duši demokratično debato
+                  in javnosti onemogoča, da bi se ustrezno odzvala.
+                </p>
+                <h3>Preprečimo vohunjenje!</h3>
+                <p>
+                  Vohunska tehnologija je popolnoma nezdružljiva z
+                  demokratičnimi standardi in človekovimi pravicami. Njena
+                  uporaba mora biti zato prepovedana. Nobena vlada ne more
+                  trditi, da spoštuje demokratične vrednote, medtem ko
+                  legalizira invazivne tehnologije, ki uničujejo našo zasebnost.
+                </p>
+              </div>
             </div>
-            <div class="terminal-window__content">
-              <h3>Kaj se dogaja?</h3>
-              <p>
-                Vlada uvaja zakon, ki SOVI daje moč, da nas nadzoruje kot še
-                nikoli doslej. Predlog zakona o Slovenski obveščevalno-varnostni
-                agenciji vsebuje skrajno sporne spremembe, ki širijo družbo
-                nadzora in grobo posegajo v naše temeljne pravice.
-              </p>
-              <p>
-                Zakon vpeljuje <em>dve nevarni novi tehnologiji</em> – tehnično
-                sredstvo za nadzor signala mobilne telefonije (t. i. IMSI
-                lovilec) in vohunsko programsko opremo za pridobivanje podatkov
-                (t. i. <i>spyware</i>). IMSI lovilci lahko identificirajo
-                uporabnike na določeni lokaciji s pomočjo njihovih telefonov,
-                medtem ko spyware omogoča popoln dostop in upravljanje
-                elektronskih naprav.
-              </p>
-              <p>
-                Posamezniki, ki so tarča vohunjenja, so izpostavljeni posegom v
-                zasebno življenje, zlorabi njihovih podatkov, izgubi
-                dostojanstva, ogrožanju varnosti ter pritiskom, ki lahko omejijo
-                svobodo izražanje, delovanja medijev, zbiranja in združevanja.
-                Poleg tega škode, ki jo povzročajo IMSI lovilci in vohunska
-                programska oprema, ni mogoče omejiti in pogosto ne prizadene le
-                domnevne tarče, temveč tudi vse, ki so v bližini naprav ali
-                komunicirajo z njo. S tem so pravice kršene širšemu krogu ljudi,
-                kar vključuje otroke, družinske člane, sodelavce, odvetnike in
-                novinarske vire, ki postanejo kolateralna škoda tovrstnega
-                nadzora.
-              </p>
-              <h3>Zakaj je nujno, da preprečimo sprejem zakona?</h3>
-              <p>
-                Nevarnost žal ni samo teorija. Praksa iz tujine nam kaže, da se
-                takšna orodja zlorabljajo za državno represijo, usmerjeno proti
-                aktivistom, predstavnikom opozicije, novinarjem, zagovornikom
-                človekovih pravic in drugim kritikom oblasti – tudi s strani
-                “demokratičnih” vlad. Spyware ni orodje za varnost, ampak orodje
-                za ustrahovanje in nadzor!
-              </p>
-              <p>
-                Vlada poskuša te izjemno nevarne spremembe sprejeti po nujnem
-                postopku pod pretvezo varnosti. S tem duši demokratično debato
-                in javnosti onemogoča, da bi se ustrezno odzvala.
-              </p>
-              <h3>Preprečimo vohunjenje!</h3>
-              <p>
-                Vohunska tehnologija je popolnoma nezdružljiva z demokratičnimi
-                standardi in človekovimi pravicami. Njena uporaba mora biti zato
-                prepovedana. Nobena vlada ne more trditi, da spoštuje
-                demokratične vrednote, medtem ko legalizira invazivne
-                tehnologije, ki uničujejo našo zasebnost.
-              </p>
+            <div class="cta-section">
+              <div class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 33 28"
+                >
+                  <path
+                    fill="#f20"
+                    d="M32.5754 24.5356 18.2347 1.1576c-.9544-1.558-2.5157-1.536-3.4702.0219L.4238 24.5256c-.9544 1.559-.2416 2.7626 1.5841 2.7626h28.9823c1.8269-.0001 2.5398-1.1961 1.5853-2.753zM16.4877 6.3322c.9183 0 1.629 1.0146 1.5819 2.2544l-.2907 7.4717c-.0471 1.2387-.6297 2.2533-1.2945 2.2533s-1.2485-1.0146-1.2955-2.2533l-.2876-7.4714c-.047-1.2399.6659-2.2545 1.5864-2.2545zm0 17.6074c-1.1589 0-1.9537-.8473-1.9297-2.0051 0-1.1829.797-2.0051 1.9297-2.0051 1.1808 0 1.9274.8222 1.9526 2.0051 0 1.1579-.7718 2.0051-1.9526 2.0051"
+                  />
+                </svg>
+              </div>
               <p>
                 Zato se nam pridruži v odločnem nasprotovanju! Opozori poslance
                 in poslanke, naj zavrnejo predlog zakona!
               </p>
             </div>
-          </div>
-          <div class="email-box">
-            <label>
-              <span>Za:</span>
-              <input type="text" value="" readonly />
-            </label>
-            <label>
-              <span>Zadeva:</span>
-              <input
-                type="text"
-                value="Zaščitite ustavne pravice in ZAVRNITE predlog Zakona o SOVI"
-                readonly
-              />
-            </label>
-            <div class="textarea">
-              <p>Spoštovani,</p>
-              <p>
-                pišem vam, ker me močno skrbi predlog
-                <strong
-                  >Zakona o Slovenski obveščevalno-varnostni agenciji</strong
-                >. Menim, da predlagane spremembe, ki uvajajo tehnično sredstvo
-                za nadzor signala mobilne telefonije (IMSI lovilci) in vohunsko
-                programsko opremo (spyware),
-                <strong
-                  >grobo posegajo v temeljne pravice državljanov in širijo
-                  družbo nadzora</strong
-                >.
-              </p>
-              <p>
-                Vohunska programska oprema omogoča popoln dostop do elektronskih
-                naprav in njihovo upravljanje, s čimer posameznike izpostavlja
-                neomejenemu posegu v zasebno življenje, zlorabi podatkov in
-                ogrožanju varnosti. Še huje, ta orodja ne prizadenejo le
-                domnevne tarče, ampak tudi širši krog ljudi – družinske člane,
-                novinarske vire, odvetnike in sodelavce, ki postanejo
-                kolateralna škoda nadzora.
-              </p>
-              <p>
-                Praksa iz tujine jasno kaže, da se takšna orodja zlorabljajo za
-                državno represijo proti novinarjem, aktivistom, politični
-                opoziciji in drugim kritikom oblasti. Spyware ni orodje za
-                varnost, ampak orodje za ustrahovanje in nadzor, ki je popolnoma
-                nezdružljivo z demokratičnimi standardi in človekovimi
-                pravicami.
-              </p>
-              <p>
-                Opozarjam tudi na to, da je poskus sprejema teh izjemno nevarnih
-                sprememb po nujnem postopku pod pretvezo varnosti nesprejemljiv,
-                saj duši demokratično debato.
-              </p>
-              <p>
-                Zato vas pozivam, da:<br />
-                1. Zavzamete odločno stališče proti in zavrnete predlog
-                zakona.<br />
-                2. Podprete zaščito ustavnih pravic in zasebnosti vseh
-                državljanov.
-              </p>
-              <p>
-                <strong
-                  >Spoštovanje demokratičnih vrednot ne more iti z roko v roki z
-                  legalizacijo invazivnih tehnologij, ki uničujejo našo
-                  zasebnost.</strong
-                >
-              </p>
-              <p>
-                Hvala za vaš čas in upam, da boste v državnem zboru delovali v
-                interesu zaščite človekovih pravic in demokracije.
-              </p>
-              <p>Lep pozdrav</p>
+            <div class="email-box">
+              <div class="label">
+                <span>Za:</span>
+                <div class="input">&nbsp;</div>
+              </div>
+              <div class="label">
+                <span>Zadeva:</span>
+                <div class="input">
+                  Zaščitite ustavne pravice in ZAVRNITE predlog Zakona o SOVI
+                </div>
+              </div>
+              <div class="textarea">
+                <p>Spoštovani,</p>
+                <p>
+                  pišem vam, ker me močno skrbi predlog
+                  <strong
+                    >Zakona o Slovenski obveščevalno-varnostni agenciji</strong
+                  >. Menim, da predlagane spremembe, ki uvajajo tehnično
+                  sredstvo za nadzor signala mobilne telefonije (IMSI lovilci)
+                  in vohunsko programsko opremo (spyware),
+                  <strong
+                    >grobo posegajo v temeljne pravice državljanov in širijo
+                    družbo nadzora</strong
+                  >.
+                </p>
+                <p>
+                  Vohunska programska oprema omogoča popoln dostop do
+                  elektronskih naprav in njihovo upravljanje, s čimer
+                  posameznike izpostavlja neomejenemu posegu v zasebno
+                  življenje, zlorabi podatkov in ogrožanju varnosti. Še huje, ta
+                  orodja ne prizadenejo le domnevne tarče, ampak tudi širši krog
+                  ljudi – družinske člane, novinarske vire, odvetnike in
+                  sodelavce, ki postanejo kolateralna škoda nadzora.
+                </p>
+                <p>
+                  Praksa iz tujine jasno kaže, da se takšna orodja zlorabljajo
+                  za državno represijo proti novinarjem, aktivistom, politični
+                  opoziciji in drugim kritikom oblasti. Spyware ni orodje za
+                  varnost, ampak orodje za ustrahovanje in nadzor, ki je
+                  popolnoma nezdružljivo z demokratičnimi standardi in
+                  človekovimi pravicami.
+                </p>
+                <p>
+                  Opozarjam tudi na to, da je poskus sprejema teh izjemno
+                  nevarnih sprememb po nujnem postopku pod pretvezo varnosti
+                  nesprejemljiv, saj duši demokratično debato.
+                </p>
+                <p>
+                  Zato vas pozivam, da:<br />
+                  1. Zavzamete odločno stališče proti in zavrnete predlog
+                  zakona.<br />
+                  2. Podprete zaščito ustavnih pravic in zasebnosti vseh
+                  državljanov.
+                </p>
+                <p>
+                  <strong
+                    >Spoštovanje demokratičnih vrednot ne more iti z roko v roki
+                    z legalizacijo invazivnih tehnologij, ki uničujejo našo
+                    zasebnost.</strong
+                  >
+                </p>
+                <p>
+                  Hvala za vaš čas in upam, da boste v državnem zboru delovali v
+                  interesu zaščite človekovih pravic in demokracije.
+                </p>
+                <p>Lep pozdrav</p>
+              </div>
+            </div>
+            <div class="email-buttons">
+              <button type="button" class="email-btn js-copy-btn">
+                <span>SKOPIRAJ MEJL</span>
+              </button>
+              <a href="mailto:" class="email-btn js-open-mail-btn">
+                <span>ODPRI V SVOJEM EMAIL KLIENTU</span>
+              </a>
             </div>
           </div>
         </div>
