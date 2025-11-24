@@ -190,13 +190,6 @@ const RESULTS_OPTIONS = [
   },
   {
     label: "Najpogosteje poslušana radijska postaja",
-    values: [
-      "Radio Študent",
-      "Val 202",
-      "Radio Center",
-      "Radio 1",
-      "Radio Antena",
-    ],
   },
   {
     label: "Povprečna vrednost nakupa v spletni banki v zadnjem tednu",
@@ -339,6 +332,70 @@ function selectEmailContent() {
   return null;
 }
 
+function addNewsletterListeners() {
+  const form = document.querySelector(".content-footer .newsletter-form");
+  if (form) {
+    const email = form.querySelector("#newsletter-email");
+    const checkbox = form.querySelector("#newsletter-checkbox");
+    const submit = form.querySelector("button[type=submit]");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.value,
+          segment_id: 21,
+        }),
+      };
+
+      // load start
+      email.disabled = true;
+      checkbox.disabled = true;
+      submit.disabled = true;
+      const previousText = submit.innerHTML;
+      submit.textContent = "⏳ Pošiljanje...";
+
+      fetch("https://podpri.lb.djnd.si/api/subscribe/", options)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.msg === "mail sent") {
+            email.value = "";
+            checkbox.checked = false;
+            // load end
+            email.disabled = false;
+            checkbox.disabled = false;
+            submit.disabled = false;
+            submit.innerHTML = previousText;
+            alert(
+              "Hvala! Poslali smo ti sporočilo s povezavo, na kateri lahko potrdiš prijavo!"
+            );
+          } else {
+            // load end
+            email.disabled = false;
+            checkbox.disabled = false;
+            submit.disabled = false;
+            submit.innerHTML = previousText;
+            alert("Prišlo je do napake :(");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          // load end
+          email.disabled = false;
+          checkbox.disabled = false;
+          submit.disabled = false;
+          submit.innerHTML = previousText;
+          alert("Prišlo je do napake :(");
+        });
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const checkBtn = document.querySelector(".js-check-btn");
   if (checkBtn) {
@@ -388,7 +445,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const emailTo = document.querySelector(".js-email-to");
       if (emailContent && emailSubject && emailTo) {
         const mailtoLink = `mailto:${encodeURIComponent(
-          emailTo.textContent.trim()
+          emailTo.textContent.trim().replace(/\s+/g, "")
         )}?subject=${encodeURIComponent(
           emailSubject.textContent.trim()
         )}&body=${encodeURIComponent(emailContent)}`;
@@ -398,4 +455,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   loadResultValues();
+  addNewsletterListeners();
 });
