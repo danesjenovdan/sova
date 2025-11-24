@@ -243,7 +243,7 @@ function loadResultValues() {
       const resultValue = resultClone.querySelector(".js-result-value");
       if (resultLabel && resultValue) {
         const savedData = localStorage.getItem(`sova-result-data-${i}`);
-        if (savedData) {
+        if (savedData && location.href.indexOf("sova-no-cache") === -1) {
           const parsedData = JSON.parse(savedData);
           resultLabel.textContent = parsedData.label;
           resultValue.textContent = parsedData.value;
@@ -314,16 +314,29 @@ function loadResultValues() {
         const dataToStore = {
           label: option.label,
           value: resultValue.textContent,
-          class: option.class,
+          class: className,
           optionIndex: optionIndex,
         };
-        // localStorage.setItem(
-        //   `sova-result-data-${i}`,
-        //   JSON.stringify(dataToStore)
-        // );
+        localStorage.setItem(
+          `sova-result-data-${i}`,
+          JSON.stringify(dataToStore)
+        );
       }
     }
   }
+}
+
+function selectEmailContent() {
+  const emailContent = document.querySelector(".js-email-content");
+  if (emailContent) {
+    const range = document.createRange();
+    range.selectNodeContents(emailContent);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    return selection;
+  }
+  return null;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -340,6 +353,47 @@ document.addEventListener("DOMContentLoaded", () => {
   if (resultsBtn) {
     resultsBtn.addEventListener("click", async () => {
       await nextContentPage();
+    });
+  }
+
+  const copyMailBtn = document.querySelector(".js-copy-mail-btn");
+  if (copyMailBtn) {
+    copyMailBtn.addEventListener("click", () => {
+      const emailContent = document.querySelector(".js-email-content");
+      if (emailContent) {
+        const selection = selectEmailContent();
+        try {
+          document.execCommand("copy");
+          selection.removeAllRanges();
+          const previousText = copyMailBtn.querySelector("span").textContent;
+          copyMailBtn.querySelector("span").innerHTML =
+            "<strong>SKOPIRANO!</strong>";
+          setTimeout(() => {
+            copyMailBtn.querySelector("span").textContent = previousText;
+          }, 2000);
+        } catch (err) {
+          console.error("Failed to copy text: ", err);
+        }
+      }
+    });
+  }
+
+  const openMailBtn = document.querySelector(".js-open-mail-btn");
+  if (openMailBtn) {
+    openMailBtn.addEventListener("click", () => {
+      const selection = selectEmailContent();
+      const emailContent = selection.toString().trim();
+      selection.removeAllRanges();
+      const emailSubject = document.querySelector(".js-email-subject");
+      const emailTo = document.querySelector(".js-email-to");
+      if (emailContent && emailSubject && emailTo) {
+        const mailtoLink = `mailto:${encodeURIComponent(
+          emailTo.textContent.trim()
+        )}?subject=${encodeURIComponent(
+          emailSubject.textContent.trim()
+        )}&body=${encodeURIComponent(emailContent)}`;
+        window.open(mailtoLink, "_blank");
+      }
     });
   }
 

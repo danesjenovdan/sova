@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sova</title>
 
     <link
       rel="apple-touch-icon"
@@ -18,6 +17,34 @@
     />
     <link rel="shortcut icon" href="./assets/favicons/favicon.ico" />
 
+    <title>Ali mi SOVA prisluškuje?</title>
+    <meta name="twitter:title" content="Ali mi SOVA prisluškuje?" />
+    <meta property="og:title" content="Ali mi SOVA prisluškuje?" />
+
+    <meta
+      name="description"
+      content="Preveri, kaj Slovenska obveščevalno-varnostna agencija ve o tebi."
+    />
+    <meta
+      property="og:description"
+      content="Preveri, kaj Slovenska obveščevalno-varnostna agencija ve o tebi."
+    />
+    <meta
+      name="twitter:description"
+      content="Preveri, kaj Slovenska obveščevalno-varnostna agencija ve o tebi."
+    />
+
+    <meta property="og:image" content="./assets/favicons/og-image.png" />
+    <meta name="twitter:image" content="./assets/favicons/og-image.png" />
+
+    <meta name="author" content="danesjenovdan" />
+    <meta property="og:site_name" content="Danes je nov dan" />
+    <meta name="twitter:creator" content="@danesjenovdan" />
+
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="stylesheet" href="./assets/fonts/selfhosted.css" />
     <link rel="stylesheet" href="./assets/main.scss" />
     <script type="module" src="./main.js"></script>
   </head>
@@ -167,15 +194,21 @@
             <div class="email-box">
               <div class="label">
                 <span>Za:</span>
-                <div class="input">&nbsp;</div>
+                <div class="input js-email-to">
+                  ps-svoboda@dz-rs.si, maja.prezelj@dz-rs.si,
+                  Terezija.Dobaja@dz-rs.si, Eva.Zunkovic@dz-rs.si,
+                  Alan.Medves@dz-rs.si, Iztok.Artic@dz-rs.si,
+                  petra.jamnik@dz-rs.si, miha.kordis@dz-rs.si,
+                  dejan.kaloh@dz-rs.si
+                </div>
               </div>
               <div class="label">
                 <span>Zadeva:</span>
-                <div class="input">
+                <div class="input js-email-subject">
                   Zaščitite ustavne pravice in ZAVRNITE predlog Zakona o SOVI
                 </div>
               </div>
-              <div class="textarea">
+              <div class="textarea js-email-content">
                 <p>Spoštovani,</p>
                 <p>
                   pišem vam, ker me močno skrbi predlog
@@ -233,12 +266,109 @@
               </div>
             </div>
             <div class="email-buttons">
-              <button type="button" class="email-btn js-copy-btn">
+              <button type="button" class="email-btn js-copy-mail-btn">
                 <span>SKOPIRAJ MEJL</span>
               </button>
-              <a href="mailto:" class="email-btn js-open-mail-btn">
+              <button type="button" class="email-btn js-open-mail-btn">
                 <span>ODPRI V SVOJEM EMAIL KLIENTU</span>
-              </a>
+              </button>
+            </div>
+          </div>
+          <div class="content-footer">
+            <div class="footer-col">
+              <div class="footer-block">
+                <a
+                  href="https://danesjenovdan.si"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="about-link"
+                  >Danes je nov dan,<br />
+                  Inštitut za druga vprašanja</a
+                >
+              </div>
+              <hr />
+              <div class="footer-block">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="about-link"
+                  >Preberi celotno mnenje o zakonu</a
+                >
+              </div>
+            </div>
+            <div class="footer-col">
+              <div class="footer-block">
+                <div class="support-box">
+                  <div class="text">
+                    <div class="title">PODPRI NAŠE DELO!</div>
+                    <div class="desc">Izberi višino donacije.</div>
+                  </div>
+                  <div class="buttons">
+                    <a
+                      href="https://moj.djnd.si/danes-je-nov-dan/doniraj/info?znesek=11"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="button-link donate-link larger"
+                      ><span>11&nbsp;€</span></a
+                    ><a
+                      href="https://moj.djnd.si/danes-je-nov-dan/doniraj/info?znesek=24"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="button-link donate-link larger"
+                      ><span>24&nbsp;€</span></a
+                    ><a
+                      href="https://moj.djnd.si/danes-je-nov-dan/doniraj"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="button-link donate-link"
+                      ><span>Poljubno</span></a
+                    ><a
+                      href="https://moj.djnd.si/danes-je-nov-dan/doniraj?mesecna=true"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="button-link donate-link"
+                      ><span>Mesečno</span></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-col">
+              <div class="footer-block">
+                <span class="semi-bold">
+                  Te zanima, kaj delamo?<br />
+                  Naroči se na Občasnik!
+                </span>
+                <form class="newsletter-form">
+                  <div class="form-group">
+                    <label>
+                      Vpiši svoj e-naslov
+                      <input type="email" id="newsletter-email" required="" />
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <input
+                        type="checkbox"
+                        id="newsletter-checkbox"
+                        required=""
+                      />
+                      <label for="newsletter-checkbox">
+                        <span>
+                          Strinjam se, da mi Danes je nov dan po e-pošti pošilja
+                          Občasnik in druga obvestila.
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="submit-button">
+                      NAROČI SE
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>

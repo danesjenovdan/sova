@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html --public-url https://sova.lb.djnd.si"
   },
   "author": "Danes je nov dan",
   "license": "Unlicense",
