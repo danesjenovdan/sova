@@ -53,6 +53,11 @@ body {
   }
 }
 
+.width-wrapper {
+  max-width: 960px;
+  margin-inline: auto;
+}
+
 button.matrix-btn {
   width: min(100%, 23rem);
   margin-top: 4rem;
