@@ -18,6 +18,11 @@ body {
   font-family: monospace;
 }
 
+::selection {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
 .page-wrapper {
   display: grid;
   align-content: center;
@@ -390,8 +395,12 @@ button.matrix-btn {
     gap: 0.5rem;
     padding: 0.5rem;
     background: #adadad;
-    font-family: system-ui, sans-serif;
     color: #000;
+
+    ::selection {
+      background: #555;
+      color: #fff;
+    }
 
     .input,
     .textarea {
@@ -425,7 +434,7 @@ button.matrix-btn {
 
       p {
         &:not(:last-child) {
-          margin-bottom: 0.5rem;
+          margin-bottom: 1rem;
         }
       }
     }
