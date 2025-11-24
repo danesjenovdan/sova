@@ -11,6 +11,7 @@ async function nextContentPage() {
   if (activePage) {
     activePage.classList.add("fade");
     activePage.classList.remove("active");
+    activePage.inert = true;
     activePage.addEventListener(
       "transitionend",
       () => {
@@ -25,6 +26,7 @@ async function nextContentPage() {
           nextPage.classList.add("fade");
           nextPage.offsetWidth; // Trigger reflow
           nextPage.classList.add("active");
+          nextPage.inert = false;
           nextPage.classList.remove("fade");
           nextPage.addEventListener(
             "transitionend",
@@ -228,8 +230,6 @@ const RESULTS_OPTIONS = [
   },
 ];
 
-const RESULTS_CLASSES = ["ok", "danger", "warning"];
-
 function loadResultValues() {
   const resultTemplate = document.querySelector(".js-result-template");
   const resultsSection = resultTemplate.closest(".results-section");
@@ -324,35 +324,6 @@ function loadResultValues() {
       }
     }
   }
-
-  // for (let i = 1; i <= 5; i++) {
-  //   const resultValue = document.querySelector(`.js-result-value-${i}`);
-  //   if (resultValue) {
-  //     const storedValue = localStorage.getItem(`sova-result-value-${i}`);
-  //     if (storedValue != null) {
-  //       resultValue.textContent = storedValue;
-  //     } else {
-  //       const range = RESULT_RANGES[i - 1];
-  //       let value = "";
-  //       if (range.values) {
-  //         const randomIndex = Math.floor(Math.random() * range.values.length);
-  //         value = range.values[randomIndex];
-  //       } else {
-  //         const randomValue =
-  //           Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
-  //         if (range.type === "time") {
-  //           const minutes = Math.floor(randomValue / 60);
-  //           const seconds = randomValue % 60;
-  //           value = `${minutes} min ${seconds} s`;
-  //         } else {
-  //           value = randomValue.toString();
-  //         }
-  //       }
-  //       resultValue.textContent = value;
-  //       // localStorage.setItem(`sova-result-value-${i}`, value);
-  //     }
-  //   }
-  // }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -187,6 +187,12 @@ button.matrix-btn {
   }
 }
 
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .results {
   .results-section {
     &:not(:first-child) {
@@ -231,15 +237,10 @@ button.matrix-btn {
       }
 
       .icon {
+        flex-shrink: 0;
         width: 2rem;
         height: 2rem;
         animation: blink 1.25s infinite;
-
-        @keyframes blink {
-          50% {
-            opacity: 0;
-          }
-        }
 
         svg {
           width: 100%;
@@ -350,17 +351,49 @@ button.matrix-btn {
     }
   }
 
+  .cta-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-block: 4rem;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .icon {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      animation: blink 1.25s infinite;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    p {
+      font-size: 1.3125rem;
+      color: var(--color-accent);
+
+      @media (max-width: 576px) {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
   .email-box {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin-top: 4rem;
     padding: 0.5rem;
     background: #adadad;
     font-family: system-ui, sans-serif;
     color: #000;
 
-    input,
+    .input,
     .textarea {
       background: #fff;
       border: 1px solid #000;
@@ -370,17 +403,18 @@ button.matrix-btn {
       color: #000;
     }
 
-    label {
+    .label {
       display: flex;
       align-items: center;
       gap: 0.5rem;
 
       span {
         flex: 1;
+        min-width: 4rem;
         text-align: right;
       }
 
-      input {
+      .input {
         flex: 10;
         padding: 0.25rem 0.5rem;
       }
@@ -393,6 +427,36 @@ button.matrix-btn {
         &:not(:last-child) {
           margin-bottom: 0.5rem;
         }
+      }
+    }
+  }
+
+  .email-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    a.email-btn,
+    button.email-btn {
+      flex: 1;
+      padding: 0.5rem;
+      background: #adadad;
+      border: 0px solid #000;
+      font-family: inherit;
+      font-size: 1.125rem;
+      color: var(--color-bg);
+      text-align: center;
+      text-decoration: none;
+
+      span {
+        display: block;
+        padding: 0.25rem 0.5rem;
+        border: 1px dotted #000;
+      }
+
+      &:hover {
+        background: #ccc;
+        color: #000;
       }
     }
   }
