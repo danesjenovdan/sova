@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sova
+  labels:
+    app: sova
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sova
+  template:
+    metadata:
+      labels:
+        app: sova
+    spec:
+      containers:
+        - name: sova
+          image: sova
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: 25Mi
+              cpu: 25m
+            limits:
+              memory: 25Mi
+              cpu: 25m
