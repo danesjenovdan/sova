@@ -113,7 +113,7 @@ const RESULTS_OPTIONS = [
     label: "Trajanje povprečnega klica ta mesec",
     min: 7 * 60 + 41,
     max: 11 * 60 + 12,
-    type: "time",
+    type: "time_min_sec",
   },
   {
     label: "Čas, preživet na straneh z eksplicitno vsebino v zadnjem letu",
@@ -223,6 +223,28 @@ const RESULTS_OPTIONS = [
   },
 ];
 
+function fixSavedData(parsedData, key) {
+  if (!parsedData.fixVersion) {
+    parsedData.fixVersion = 0;
+  }
+  if (parsedData.fixVersion < 1) {
+    if (parsedData.label === "Trajanje povprečnega klica ta mesec") {
+      console.log("Fixing time format for:", parsedData);
+      // fix time format from "X h Y min" to "X min Y s"
+      const timeParts = /(\d+)\s*h\s*(\d+)\s*min/.exec(parsedData.value);
+      if (timeParts) {
+        const minutes = parseInt(timeParts[1], 10);
+        const seconds = parseInt(timeParts[2], 10);
+        const newValue = `${minutes} min ${seconds} s`;
+        parsedData.value = newValue;
+      }
+    }
+    parsedData.fixVersion = 1;
+  }
+  localStorage.setItem(key, JSON.stringify(parsedData));
+  return parsedData;
+}
+
 function loadResultValues() {
   const resultTemplate = document.querySelector(".js-result-template");
   const resultsSection = resultTemplate.closest(".results-section");
@@ -237,7 +259,10 @@ function loadResultValues() {
       if (resultLabel && resultValue) {
         const savedData = localStorage.getItem(`sova-result-data-${i}`);
         if (savedData && location.href.indexOf("sova-no-cache") === -1) {
-          const parsedData = JSON.parse(savedData);
+          const parsedData = fixSavedData(
+            JSON.parse(savedData),
+            `sova-result-data-${i}`
+          );
           resultLabel.textContent = parsedData.label;
           resultValue.textContent = parsedData.value;
           resultClone.querySelector(".alert").classList.add(parsedData.class);
@@ -285,6 +310,10 @@ function loadResultValues() {
             const hours = Math.floor(randomValue / 60);
             const minutes = randomValue % 60;
             value = `${hours} h ${minutes} min`;
+          } else if (option.type === "time_min_sec") {
+            const minutes = Math.floor(randomValue / 60);
+            const seconds = randomValue % 60;
+            value = `${minutes} min ${seconds} s`;
           } else if (option.type === "distance") {
             value = `${formattedValueFloat} km`;
           } else if (option.type === "speed") {
@@ -309,6 +338,7 @@ function loadResultValues() {
           value: resultValue.textContent,
           class: className,
           optionIndex: optionIndex,
+          fixVersion: 1,
         };
         localStorage.setItem(
           `sova-result-data-${i}`,
