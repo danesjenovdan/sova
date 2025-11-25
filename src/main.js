@@ -426,6 +426,30 @@ function addNewsletterListeners() {
   }
 }
 
+function skipToExplanationIfNeeded() {
+  let pageClass = null;
+  if (location.hash === "#razlaga") {
+    pageClass = "explanation";
+  } else if (location.hash === "#rezultati") {
+    pageClass = "results";
+  }
+
+  if (!pageClass) {
+    return;
+  }
+
+  const pages = document.querySelectorAll(".content-page");
+  pages.forEach((page) => {
+    if (pageClass && page.classList.contains(pageClass)) {
+      page.classList.add("active");
+      page.inert = false;
+    } else {
+      page.classList.remove("active");
+      page.inert = true;
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const checkBtn = document.querySelector(".js-check-btn");
   if (checkBtn) {
@@ -486,4 +510,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadResultValues();
   addNewsletterListeners();
+  skipToExplanationIfNeeded();
+  window.addEventListener("hashchange", () => {
+    skipToExplanationIfNeeded();
+  });
 });
