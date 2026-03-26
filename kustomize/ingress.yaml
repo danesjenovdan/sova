@@ -1,24 +1,38 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: enable-cors
+spec:
+  headers:
+    accessControlAllowOriginList:
+      - "https://sova.djnd.si"
+      - "https://sova.danesjenovdan.si"
+    accessControlAllowMethods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - OPTIONS
+    accessControlAllowHeaders:
+      - "*"
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: sova
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "https://sova.danesjenovdan.si, https://sova.djnd.si, https://sova.lb.djnd.si"
+    traefik.ingress.kubernetes.io/router.middlewares: sova-enable-cors@kubernetescrd
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   tls:
     - hosts:
-        - sova.lb.djnd.si
-      secretName: sova-tls
-    - hosts:
-        - sova.danesjenovdan.si
         - sova.djnd.si
+        - sova.danesjenovdan.si
       secretName: sova-djnd-tls
   rules:
-    - host: sova.lb.djnd.si
-      http:
+    - host: sova.djnd.si
+      http: &http_paths
         paths:
           - path: /
             pathType: Prefix
@@ -28,22 +42,4 @@ spec:
                 port:
                   number: 80
     - host: sova.danesjenovdan.si
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: sova
-                port:
-                  number: 80
-    - host: sova.djnd.si
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: sova
-                port:
-                  number: 80
+      http: *http_paths
