@@ -1,11 +1,11 @@
 {
-  "name": "sova",
+  "name": "palestina",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --public-url https://sova.danesjenovdan.si"
+    "build": "parcel build src/index.html --public-url https://smrtna-kazen-izrael.danesjenovdan.si"
   },
   "author": "Danes je nov dan",
   "license": "Unlicense",

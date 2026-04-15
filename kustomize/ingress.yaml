@@ -5,8 +5,8 @@ metadata:
 spec:
   headers:
     accessControlAllowOriginList:
-      - "https://sova.djnd.si"
-      - "https://sova.danesjenovdan.si"
+      - "https://smrtna-kazen-izrael.djnd.si"
+      - "https://smrtna-kazen-izrael.danesjenovdan.si"
     accessControlAllowMethods:
       - GET
       - POST
@@ -19,27 +19,27 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: sova
+  name: palestina
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
-    traefik.ingress.kubernetes.io/router.middlewares: sova-enable-cors@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: palestina-enable-cors@kubernetescrd
 spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - sova.djnd.si
-        - sova.danesjenovdan.si
-      secretName: sova-djnd-tls
+        - smrtna-kazen-izrael.djnd.si
+        - smrtna-kazen-izrael.danesjenovdan.si
+      secretName: palestina-tls
   rules:
-    - host: sova.djnd.si
+    - host: smrtna-kazen-izrael.djnd.si
       http: &http_paths
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: sova
+                name: palestina
                 port:
                   number: 80
-    - host: sova.danesjenovdan.si
+    - host: smrtna-kazen-izrael.danesjenovdan.si
       http: *http_paths

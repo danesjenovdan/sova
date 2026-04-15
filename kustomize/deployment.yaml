@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sova
+  name: palestina
   labels:
-    app: sova
+    app: palestina
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sova
+      app: palestina
   template:
     metadata:
       labels:
-        app: sova
+        app: palestina
     spec:
       containers:
-        - name: sova
-          image: sova
+        - name: palestina
+          image: palestina
           ports:
             - containerPort: 80
           resources:
