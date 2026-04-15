@@ -1,5 +1,3 @@
-import Termynal from "termynal";
-
 async function nextContentPage() {
   let resolve = null;
   const promise = new Promise((res) => {
@@ -33,72 +31,15 @@ async function nextContentPage() {
             () => {
               resolve();
             },
-            { once: true }
+            { once: true },
           );
         }
       },
-      { once: true }
+      { once: true },
     );
   }
 
   return promise;
-}
-
-async function startTermynal() {
-  const termynal = new Termynal(
-    "#autotype",
-    {
-      autoplay: true,
-      startDelay: 0,
-      typeDelay: 10,
-      lineDelay: 400,
-      progressLength: 30,
-    },
-    [
-      {
-        type: "input",
-        value: "> Analiziram podatke...",
-      },
-      {
-        type: "input",
-        value: "> Preverjam vire...",
-      },
-      {
-        type: "input",
-        value: "> Dostopam do baze...",
-      },
-      { type: "progress", typeDelay: 30, delay: 1 },
-      { value: "DOSTOP ODOBREN." },
-      {
-        value: "> Odpiram arhiv...",
-        delay: 1,
-      },
-      { type: "progress", typeDelay: 10, delay: 1 },
-      { value: "> Ustvarjam profil...", delay: 1 },
-      { type: "progress", typeDelay: 60, delay: 1 },
-      { value: "PROFIL USTVARJEN.", delay: 1000 },
-      { value: "", className: "termynal-done" },
-    ]
-  );
-
-  // listen for the element with class "termynal-done" to appear
-  await new Promise((resolve) => {
-    const observer = new MutationObserver((mutations) => {
-      for (const mutation of mutations) {
-        for (const node of mutation.addedNodes) {
-          if (
-            node.nodeType === Node.ELEMENT_NODE &&
-            node.classList.contains("termynal-done")
-          ) {
-            observer.disconnect();
-            resolve();
-          }
-        }
-      }
-    });
-
-    observer.observe(termynal.container, { childList: true });
-  });
 }
 
 const NUM_RESULTS = 6;
@@ -261,7 +202,7 @@ function loadResultValues() {
         if (savedData && location.href.indexOf("sova-no-cache") === -1) {
           const parsedData = fixSavedData(
             JSON.parse(savedData),
-            `sova-result-data-${i}`
+            `sova-result-data-${i}`,
           );
           resultLabel.textContent = parsedData.label;
           resultValue.textContent = parsedData.value;
@@ -342,7 +283,7 @@ function loadResultValues() {
         };
         localStorage.setItem(
           `sova-result-data-${i}`,
-          JSON.stringify(dataToStore)
+          JSON.stringify(dataToStore),
         );
       }
     }
@@ -402,7 +343,7 @@ function addNewsletterListeners() {
             submit.disabled = false;
             submit.innerHTML = previousText;
             alert(
-              "Hvala! Poslali smo ti sporočilo s povezavo, na kateri lahko potrdiš prijavo!"
+              "Hvala! Poslali smo ti sporočilo s povezavo, na kateri lahko potrdiš prijavo!",
             );
           } else {
             // load end
@@ -455,7 +396,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (checkBtn) {
     checkBtn.addEventListener("click", async () => {
       await nextContentPage();
-      await startTermynal();
       await nextContentPage();
     });
   }
@@ -499,9 +439,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const emailTo = document.querySelector(".js-email-to");
       if (emailContent && emailSubject && emailTo) {
         const mailtoLink = `mailto:${encodeURIComponent(
-          emailTo.textContent.trim().replace(/\s+/g, "")
+          emailTo.textContent.trim().replace(/\s+/g, ""),
         )}?subject=${encodeURIComponent(
-          emailSubject.textContent.trim()
+          emailSubject.textContent.trim(),
         )}&body=${encodeURIComponent(emailContent)}`;
         window.open(mailtoLink, "_blank");
       }

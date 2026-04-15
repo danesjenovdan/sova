@@ -10,11 +10,8 @@
   "author": "Danes je nov dan",
   "license": "Unlicense",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.16.1",
-    "parcel": "^2.16.1",
-    "sass": "^1.94.2"
-  },
-  "dependencies": {
-    "termynal": "^0.0.4"
+    "@parcel/transformer-sass": "^2.16.4",
+    "parcel": "^2.16.4",
+    "sass": "^1.99.0"
   }
 }

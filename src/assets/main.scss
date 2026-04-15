@@ -1,5 +1,4 @@
 @use "reset";
-@use "termynal/dist/style.css";
 
 :root {
   --color-bg: #151515;
@@ -188,21 +187,6 @@ button.matrix-btn {
 
   @media (max-width: 576px) {
     padding-block: 1.5rem;
-  }
-}
-
-[data-termynal] {
-  padding: 0;
-  font: inherit;
-  color: inherit;
-
-  pre {
-    font: inherit;
-  }
-
-  &::before,
-  &::after {
-    display: none;
   }
 }
 
