@@ -8,4 +8,4 @@ resources:
 images:
   - name: palestina
     newName: rg.fr-par.scw.cloud/djnd/palestina
-    newTag: "latest"
+    newTag: 'f203a44d19695bae88a97fd5fec2ee10f2cf3bc7'
