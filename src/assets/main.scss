@@ -51,6 +51,12 @@ body {
     margin-bottom: 2rem;
     padding-inline: 2rem;
 
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding-inline: 1rem;
+    }
+
     h1 {
       font-size: 3rem;
       font-weight: 800;
@@ -63,6 +69,12 @@ body {
     padding-inline: 2rem;
     font-size: 1.3125rem;
     line-height: 1.7;
+
+    @media (max-width: 576px) {
+      margin-bottom: 2rem;
+      padding-inline: 1rem;
+      font-size: 1.125rem;
+    }
 
     p {
       &:not(:last-child) {
@@ -78,6 +90,10 @@ body {
     padding: 2rem;
     background: #008c4f;
     color: #000;
+
+    @media (max-width: 576px) {
+      padding: 1rem;
+    }
 
     ::selection {
       background: #555;
@@ -132,6 +148,10 @@ body {
     gap: 1rem;
     margin-top: 1rem;
 
+    @media (max-width: 576px) {
+      flex-direction: column;
+    }
+
     a.email-btn,
     button.email-btn {
       flex: 1;
@@ -176,7 +196,9 @@ body {
 
   @media (max-width: 576px) {
     flex-direction: column;
+    margin-top: 3rem;
     padding-block: 2rem;
+    text-align: center;
   }
 
   a {
