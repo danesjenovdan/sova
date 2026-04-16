@@ -1,33 +1,13 @@
-/* Fira Code */
+/**
+* Switzer
+*
+* available axes:
+*   'wght' (range from 100.0 to 900.0)
+*/
 @font-face {
   font-display: swap;
-  font-family: "wf-fira-code";
+  font-family: "wf-switzer";
   font-style: normal;
-  font-weight: 400;
-  src: url("./fira-code-v27-latin_latin-ext/fira-code-v27-latin_latin-ext-regular.woff2")
-    format("woff2");
-}
-@font-face {
-  font-display: swap;
-  font-family: "wf-fira-code";
-  font-style: normal;
-  font-weight: 500;
-  src: url("./fira-code-v27-latin_latin-ext/fira-code-v27-latin_latin-ext-500.woff2")
-    format("woff2");
-}
-@font-face {
-  font-display: swap;
-  font-family: "wf-fira-code";
-  font-style: normal;
-  font-weight: 600;
-  src: url("./fira-code-v27-latin_latin-ext/fira-code-v27-latin_latin-ext-600.woff2")
-    format("woff2");
-}
-@font-face {
-  font-display: swap;
-  font-family: "wf-fira-code";
-  font-style: normal;
-  font-weight: 700;
-  src: url("./fira-code-v27-latin_latin-ext/fira-code-v27-latin_latin-ext-700.woff2")
-    format("woff2");
+  font-weight: 100 900;
+  src: url("./switzer/Switzer-Variable.woff2") format("woff2");
 }
