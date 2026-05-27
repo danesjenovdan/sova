@@ -365,63 +365,20 @@ function selectEmailContent() {
 function addNewsletterListeners() {
   const form = document.querySelector(".content-footer .newsletter-form");
   if (form) {
-    const email = form.querySelector("#newsletter-email");
+    const emailEl = form.querySelector("#newsletter-email");
     const checkbox = form.querySelector("#newsletter-checkbox");
     const submit = form.querySelector("button[type=submit]");
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email.value,
-          segment_id: 21,
-        }),
-      };
+      const campaign_slug = "danes-je-nov-dan";
+      const segment_id = 21;
+      const email = emailEl.value;
 
-      // load start
-      email.disabled = true;
-      checkbox.disabled = true;
-      submit.disabled = true;
-      const previousText = submit.innerHTML;
-      submit.textContent = "⏳ Pošiljanje...";
-
-      fetch("https://podpri.lb.djnd.si/api/subscribe/", options)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.msg === "mail sent") {
-            email.value = "";
-            checkbox.checked = false;
-            // load end
-            email.disabled = false;
-            checkbox.disabled = false;
-            submit.disabled = false;
-            submit.innerHTML = previousText;
-            alert(
-              "Hvala! Poslali smo ti sporočilo s povezavo, na kateri lahko potrdiš prijavo!"
-            );
-          } else {
-            // load end
-            email.disabled = false;
-            checkbox.disabled = false;
-            submit.disabled = false;
-            submit.innerHTML = previousText;
-            alert("Prišlo je do napake :(");
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-          // load end
-          email.disabled = false;
-          checkbox.disabled = false;
-          submit.disabled = false;
-          submit.innerHTML = previousText;
-          alert("Prišlo je do napake :(");
-        });
+      let url = `https://moj.djnd.si/${campaign_slug}/prijava?segment_id=${segment_id}`;
+      url += `&email=${encodeURIComponent(email)}`;
+      window.open(`${url}`, `_blank`);
     });
   }
 }
