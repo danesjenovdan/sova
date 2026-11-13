@@ -12,6 +12,6 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.16.4",
     "parcel": "^2.16.4",
-    "sass": "^1.99.0"
+    "sass": "^1.108.2"
   }
 }
